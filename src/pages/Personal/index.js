@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, Image, TextInput, KeyboardAvoidingView } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -18,7 +18,10 @@ export default function Personal() {
     }
 
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView 
+            behavior="position"
+            style={styles.container}
+        >
             <View style={styles.header}>
                 <TouchableOpacity
                     style={styles.buttonToBack}
@@ -86,6 +89,6 @@ export default function Personal() {
                     <Text style={styles.buttonText}>Apagar minha conta</Text>
                 </TouchableOpacity>
             </View>
-        </View >
+        </KeyboardAvoidingView>
     )
 }

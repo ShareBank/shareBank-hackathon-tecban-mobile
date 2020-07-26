@@ -20,13 +20,19 @@ export default function Profile() {
         navigation.navigate('Personal')
     }
 
+    function navigateToTransactions() {
+        navigation.navigate('Transactions')
+    }
+
     return (
         <View style={styles.container}>
             <StatusBar
                 barStyle="light-content"
             />
 
-            <View style={styles.header}>
+            <View style={styles.header}></View>
+
+            <View style={styles.headerInfo}>
                 <Text style={styles.headerText}>Oi Leonardo! 👋</Text>
 
                 <TouchableOpacity
@@ -49,7 +55,7 @@ export default function Profile() {
 
                         <TouchableOpacity
                             style={styles.actionButton}
-                            onPress={() => { }}
+                            onPress={navigateToTransactions}
                         >
                             <Text style={styles.actionText}>Detalhes</Text>
 

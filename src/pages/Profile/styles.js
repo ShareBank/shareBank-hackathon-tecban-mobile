@@ -11,9 +11,18 @@ export default StyleSheet.create({
         backgroundColor: '#000',
         height: 153,
         paddingHorizontal: 20,
-        paddingTop: StatusBar.statusBarHeight + 8,
         justifyContent: 'space-between',
+        zIndex: 0
+    },
+
+    headerInfo: {
         flexDirection: 'row',
+        justifyContent: 'space-between',
+        zIndex: 3,
+        position: 'absolute',
+        paddingTop: StatusBar.statusBarHeight + 8,
+        left: 25,
+        right: 25
     },
 
     headerText: {
@@ -25,13 +34,20 @@ export default StyleSheet.create({
     photo: {
         width: 32,
         height: 32,
-        borderRadius: 32/2
+        borderRadius: 32/2,
+        zIndex: 10
     },
 
     section: {
         flexDirection: 'column',
         alignItems: 'center',
+        justifyContent: 'center',
         paddingHorizontal: 21,
+        paddingTop: StatusBar.statusBarHeight + 65,
+        position: 'absolute',
+        zIndex: 1, 
+        right: 0,
+        left: 0
     },
 
     card: {
