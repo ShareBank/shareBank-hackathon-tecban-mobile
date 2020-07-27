@@ -39,9 +39,8 @@ export default StyleSheet.create({
     },
 
     section: {
+        flex: 1,
         flexDirection: 'column',
-        alignItems: 'center',
-        justifyContent: 'center',
         paddingHorizontal: 21,
         paddingTop: StatusBar.statusBarHeight + 65,
         position: 'absolute',
@@ -57,7 +56,7 @@ export default StyleSheet.create({
         paddingHorizontal: 18,
         paddingVertical: 21,
         borderRadius: 8,
-        marginBottom: 20
+        marginTop: 19
     },
 
     headerCard: {
@@ -79,7 +78,7 @@ export default StyleSheet.create({
 
     valueSection: {
         flexDirection: 'column',
-        marginTop: 19
+        marginTop: 18
     },
 
     valueTitle: {
@@ -121,13 +120,14 @@ export default StyleSheet.create({
 
     extractionSection: {
         flexDirection: 'column',
-        marginTop: 19
+        marginTop: 18
     },
 
     extraction: {
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
+
     extractionDescription: {
         fontSize: 14,
         fontFamily: 'Poppins_400Regular',
@@ -145,6 +145,7 @@ export default StyleSheet.create({
 
     infoSection: {
         flexDirection: 'column',
+        marginTop: 18
     },
 
     infoRow: {
@@ -182,5 +183,36 @@ export default StyleSheet.create({
 
     iconMoney: {
         justifyContent: 'center'
-    }
+    },
+
+    banks: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 19,
+    },
+
+    addAccount: {
+        backgroundColor: '#D8E7FF',
+        width: 180,
+        height: 188,
+        borderRadius: 8,
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+
+    titleAdd: {
+        fontFamily: 'Poppins_600SemiBold',
+        fontSize: 14,
+        color: '#656565',
+        marginTop:14
+    },
+
+    description: {
+        fontFamily: 'Poppins_400Regular',
+        fontSize: 14,
+        color: '#656565',
+        textAlign: 'center',
+        width: 130
+    },
 })

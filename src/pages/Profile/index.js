@@ -1,8 +1,10 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { View, Text, Image, StatusBar, FlatList, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native'
 
 import { Feather } from '@expo/vector-icons'
+import AsyncStorage from "@react-native-community/async-storage";
+import apiShareBank from '../../services/apiShareBank';
 
 import styles from './styles'
 
@@ -10,11 +12,58 @@ import imageProfile from '../../assets/images-profile/img-profile.jpg'
 import iconTrasaction from '../../assets/icon/return-on-investment.png';
 import iconQr from '../../assets/icon/qr-code.png';
 import iconMoney from '../../assets/icon/money.png';
+import iconPlus from '../../assets/icon/plus.png';
+import iconBank from '../../assets/icon/bank.png';
 
 
 export default function Profile() {
 
+    const api = apiShareBank();
+
     const navigation = useNavigation();
+    const [name, setName] = useState('');
+    const [balance, setbalance] = useState('');
+
+    const getName = async () => {
+        const userName = await AsyncStorage.getItem('userName');
+        setName(userName);
+    } 
+
+    const getBalance = async () => {
+        try {
+            await api.openbankBalances().then((response)=>{
+                
+                const {Data:{Balance}} = response;
+                if(Balance){
+                    const totalBalance = 
+                    Number(Balance[0].Amount.Amount) +
+                    Number(Balance[1].Amount.Amount) +
+                    Number(Balance[2].Amount.Amount);
+                    setbalance(totalBalance);
+                    if (totalBalance) {                        
+                        handleSaveStorage(totalBalance);
+                    }
+                } else{
+                    return 0 ;
+                }                
+            }).catch((error)=>{
+                console.log(error);
+            })         
+        } catch (error) {
+            alert('Não foi possivel obter o Saldo da Conta')
+        }
+    }
+
+    const handleSaveStorage = async (totalBalance) =>{
+        if(totalBalance){
+            await AsyncStorage.setItem('totalBalance', totalBalance.toString());             
+        }
+    }
+
+    useEffect(()=>{
+        getName();
+        getBalance();
+    },[]);
 
     function navigateToPersonal() {
         navigation.navigate('Personal')
@@ -23,6 +72,18 @@ export default function Profile() {
     function navigateToTransactions() {
         navigation.navigate('Transactions')
     }
+
+    function navigateToExtractionsQR() {
+        navigation.navigate('ExtractionsQR')
+    }
+
+    function navigateToAddBank() {
+        navigation.navigate('AddBank')
+    }    
+
+    function navigateToBankManager() {
+        navigation.navigate('BankManager')
+    }  
 
     return (
         <View style={styles.container}>
@@ -33,7 +94,7 @@ export default function Profile() {
             <View style={styles.header}></View>
 
             <View style={styles.headerInfo}>
-                <Text style={styles.headerText}>Oi Leonardo! 👋</Text>
+                <Text style={styles.headerText}>Oi {name}! 👋</Text>
 
                 <TouchableOpacity
                     onPress={navigateToPersonal}
@@ -51,7 +112,7 @@ export default function Profile() {
 
                     <View style={styles.valueSection}>
                         <Text style={styles.valueTitle}>TOTAL EM CONTAS</Text>
-                        <Text style={styles.value}>3405.20</Text>
+                        <Text style={styles.value}>R$ {balance}</Text>
 
                         <TouchableOpacity
                             style={styles.actionButton}
@@ -82,7 +143,7 @@ export default function Profile() {
 
                         <TouchableOpacity
                             style={styles.actionButton}
-                            onPress={() => { }}
+                            onPress={navigateToExtractionsQR}
                         >
                             <Text style={styles.actionText}>Sacar</Text>
 
@@ -91,6 +152,25 @@ export default function Profile() {
                             </View>
                         </TouchableOpacity>
                     </View>
+                </View>
+
+                <View style={styles.banks}>
+                    <TouchableOpacity
+                        style={styles.addAccount}
+                        onPress={navigateToAddBank}
+                    >
+                        <Image source={iconPlus} />
+                        <Text style={styles.titleAdd}>Adicionar conta</Text>
+                        <Text style={styles.description}>adicionar uma conta de banco</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        style={[styles.addAccount, { backgroundColor: '#FFF'}]}
+                        onPress={navigateToBankManager}
+                    >
+                        <Image source={iconBank} />
+                        <Text style={[styles.description, { marginTop: 13}]}>Você tem 3 bancos adicionados</Text>
+                    </TouchableOpacity>
                 </View>
 
                 <View style={[styles.card, { backgroundColor: '#FFFFAC' }]}>

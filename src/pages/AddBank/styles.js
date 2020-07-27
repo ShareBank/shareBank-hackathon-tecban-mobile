@@ -18,7 +18,7 @@ export default StyleSheet.create({
     },
 
     buttonToBack: {
-        flexDirection:'row',
+        flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center'
     },
@@ -50,13 +50,15 @@ export default StyleSheet.create({
 
     input: {
         marginTop: 30,
-        width: 308
+        width: 308,
+        borderBottomWidth: 1,
+        borderBottomColor: '#C1C1C1'
     },
 
     inputLabel: {
         color: '#FF00A4',
         fontSize: 10,
-        fontFamily: 'Poppins_500Medium'
+        fontFamily: 'Poppins_500Medium',
     },
 
     textInput: {
@@ -72,6 +74,9 @@ export default StyleSheet.create({
         alignItems: 'center',
         marginTop: 45,
         paddingVertical: 9,
+        borderRadius: 23,
+        borderColor: '#0E65E5',
+        borderWidth: 2,
         borderRadius: 23
     },
 
@@ -79,5 +84,16 @@ export default StyleSheet.create({
         color: '#FFF',
         fontFamily: 'Raleway_700Bold',
         fontSize: 17
+    },
+
+    buttonCancel: {
+        width: '100%',
+        backgroundColor: '#FFF',
+        alignItems: 'center',
+        marginTop: 18,
+        paddingVertical: 9,
+        borderColor: '#000',
+        borderWidth: 2,
+        borderRadius: 23
     },
 })

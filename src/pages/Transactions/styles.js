@@ -119,11 +119,12 @@ export default StyleSheet.create({
     card: {
         backgroundColor: '#FFF',
         width: '100%',
-        height: 188,
+        height: 500,
         paddingHorizontal: 18,
         paddingVertical: 21,
         borderRadius: 8,
-        marginBottom: 20
+        marginBottom: 20,
+        paddingBottom: 20
     },
 
     headerCard: {
@@ -134,13 +135,64 @@ export default StyleSheet.create({
     icon: {
         width: 14.76,
         height: 14.76,
-        marginRight: 5.24
+        marginRight: 5.24,
     },
 
     cardText: {
-        fontFamily: 'Poppins_300Light',
+        fontFamily: 'Poppins_500Medium',
         fontSize: 12,
-        color: '#6A6A6A'
+        color: '#F71963'
+    },
+
+    listItem: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        //justifyContent: 'space-between',
+        marginTop: 13,
+        paddingBottom: 9.5,
+        borderBottomColor: '#EBEBEB',
+        borderBottomWidth: 1
+    },
+
+    viewIcon: {
+        borderColor: '#000',
+        borderWidth: 1,
+        width: 50,
+        height: 50,
+        borderRadius: 50/2,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+
+    description: {
+        flexDirection: 'column',
+        justifyContent: 'space-between',
+        marginLeft: 7
+    },
+
+    itemTitle: {
+        fontFamily: 'Poppins_500Medium',
+        fontSize: 12,
+        color: '#2E2125'
+    },
+
+    itemBank: {
+        color: '#444444',
+        fontFamily: 'Poppins_300Light',
+        fontSize: 10
+    },
+
+    itemData: {
+        fontSize: 8,
+        fontFamily: 'Poppins_300Light',
+        color: '#A2A2A2'
+    },
+
+    itemValue: {
+        left: 100,
+        color: '#FA0255',
+        fontFamily: 'Poppins_500Medium',
+        fontSize: 11
     },
 
     //Estilização do Modal

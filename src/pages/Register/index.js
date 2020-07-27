@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, TextInput } from 'react-native';
+import { View, Text, TouchableOpacity, TextInput, KeyboardAvoidingView, Platform } from 'react-native';
 import { Feather } from '@expo/vector-icons'
 import { useNavigation } from '@react-navigation/native'
 
@@ -12,8 +12,15 @@ export default function Register() {
         navigation.goBack();
     }
 
+    function navigateProfile() {
+        navigation.navigate('Profile');
+    }
+
     return (
-        <View style={styles.container}>
+        <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+            style={styles.container}
+        >
             <View style={styles.header}>
 
                 <TouchableOpacity
@@ -59,13 +66,13 @@ export default function Register() {
 
                     <TouchableOpacity
                         style={styles.buttonRegister}
-                        onPress={() => { }}
+                        onPress={navigateProfile}
                     >
                         <Text style={styles.buttonText}>Fazer cadastro</Text>
                     </TouchableOpacity>
                 </View>
             </View>
 
-        </View>
+        </KeyboardAvoidingView>
     )
 }
