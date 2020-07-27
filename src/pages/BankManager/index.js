@@ -29,11 +29,15 @@ export default function BankManager() {
                 </TouchableOpacity>
 
                 <View style={styles.title}>
-                    <Text style={styles.textTitle}>Saque Digital</Text>
+                    <Text style={styles.textTitle}>Bancos</Text>
                 </View>
             </View>
 
             <View style={styles.sectionBanks}>
+                <Text style={styles.bankTitle}>
+                Todas as contas bancárias
+                </Text>
+
                 <TouchableOpacity 
                     style={styles.bank}
                 >

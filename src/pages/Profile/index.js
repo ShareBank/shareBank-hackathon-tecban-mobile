@@ -14,6 +14,7 @@ import iconQr from '../../assets/icon/qr-code.png';
 import iconMoney from '../../assets/icon/money.png';
 import iconPlus from '../../assets/icon/plus.png';
 import iconBank from '../../assets/icon/bank.png';
+import { ScrollView } from 'react-native-gesture-handler';
 
 
 export default function Profile() {
@@ -86,7 +87,7 @@ export default function Profile() {
     }  
 
     return (
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
             <StatusBar
                 barStyle="light-content"
             />
@@ -112,7 +113,12 @@ export default function Profile() {
 
                     <View style={styles.valueSection}>
                         <Text style={styles.valueTitle}>TOTAL EM CONTAS</Text>
-                        <Text style={styles.value}>R$ {balance}</Text>
+                        <Text style={styles.value}>
+                            {Intl.NumberFormat('pt-BR', { 
+                                style: 'currency', 
+                                currency: 'BRL'
+                            }).format(balance)}
+                        </Text>
 
                         <TouchableOpacity
                             style={styles.actionButton}
@@ -169,7 +175,7 @@ export default function Profile() {
                         onPress={navigateToBankManager}
                     >
                         <Image source={iconBank} />
-                        <Text style={[styles.description, { marginTop: 13}]}>Você tem 3 bancos adicionados</Text>
+                        <Text style={[styles.description, { marginTop: 13}]}>Você tem 1 banco adicionados</Text>
                     </TouchableOpacity>
                 </View>
 
@@ -206,6 +212,6 @@ export default function Profile() {
                     </View>
                 </View>
             </View>
-        </View>
+        </ScrollView>
     )
 }

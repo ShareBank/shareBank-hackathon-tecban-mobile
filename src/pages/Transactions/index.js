@@ -81,7 +81,12 @@ export default function Profile() {
 
                 <View style={styles.transactionView}>
                     <Text style={styles.transactionTitle}>TOTAL EM CONTAS</Text>
-                    <Text style={styles.value}>R$ {balance} </Text>
+                    <Text style={styles.value}>
+                        {Intl.NumberFormat('pt-BR', {
+                            style: 'currency',
+                            currency: 'BRL'
+                        }).format(balance)}
+                    </Text>
 
                     <TouchableOpacity
                         style={styles.automation}
@@ -100,8 +105,8 @@ export default function Profile() {
                     </View>
 
                     <FlatList
-                        data={[1, 2, 3, 4, 5, 6, 7, 8, 9]}
-                        keyExtractor={transaction => String(transaction)}
+                        data={transactions}
+                        keyExtractor={transaction => String(transaction.TransactionId)}
                         renderItem={({ item: transaction }) => (
                             <View style={styles.listItem}>
                                 <View style={styles.viewIcon}>
@@ -109,7 +114,7 @@ export default function Profile() {
                                 </View>
                                 <View style={styles.description}>
                                     <Text style={styles.itemTitle}>Faculdade</Text>
-                                    <Text style={styles.itemBank}>Saque do Banco Inter</Text>
+                                    <Text style={styles.itemBank}>Saque do Banco 1</Text>
                                     <Text style={styles.itemData}>25 de junho de 2019</Text>
                                 </View>
                                 <Text style={styles.itemValue}>-R$ 600,00</Text>
@@ -163,12 +168,19 @@ export default function Profile() {
 
                         <View style={styles.formLogin}>
                             <View style={styles.input}>
-                                <Text style={styles.inputLabel}>Nome desta operação</Text>
+                                <Text style={styles.inputLabel}>Mês de início</Text>
                                 <TextInput style={styles.textInput} />
                             </View>
 
                             <View style={styles.input}>
-                                <Text style={[styles.inputLabel, { marginTop: 30 }]}>Valor</Text>
+                                <Text style={[styles.inputLabel, { marginTop: 30 }]}>Mês de término</Text>
+                                <TextInput
+                                    style={styles.textInput}
+                                />
+                            </View>
+
+                            <View style={styles.input}>
+                                <Text style={[styles.inputLabel, { marginTop: 30 }]}>Mês de término</Text>
                                 <TextInput
                                     style={styles.textInput}
                                 />
